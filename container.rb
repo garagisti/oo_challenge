@@ -15,9 +15,12 @@ attr_accessor :volume, :parcels
 
   # TODO: Ben
   def remove_parcel(id)
-   # Pseudo code:
-   # parcels.delete(id) if parcels.include?(id)
-   # puts "Removed the parcel with id: #{id} from the container"
+    if parcels.include?(parcel.id)
+      parcels.delete(parcel.id) 
+      puts "Removed the parcel with id: #{parcel.id} from the container"
+    else
+      puts "Parcel not found within the container"
+    end
   end
 
 private
