@@ -1,6 +1,5 @@
 class Container
-
-attr_accessor :volume, :parcels
+  attr_accessor :volume, :parcels
 
   def initialize(volume)
     @volume = volume
@@ -9,29 +8,27 @@ attr_accessor :volume, :parcels
 
   # TODO: Rahul
   def add_parcel(parcel)
-    byebug
     @parcels << parcel if
-    has_space?(parcel.volume) && !is_parcel_in_container?(parcel.id)
+    any_space?(parcel.volume) && !parcel_in_container?(parcel.id)
   end
 
   # TODO: Ben
   def remove_parcel(id)
-    if is_parcel_in_container?(id)
-      @parcels.each { |parcel|
+    if parcel_in_container?(id)
+      @parcels.each do |parcel|
         if parcel.id == id
           puts "Removed the parcel with id: #{parcel.id} from the container"
-          byebug
           @parcels.delete(parcel)
         end
-        }
+      end
     else
-      puts "Parcel not found within the container"
+      puts 'Parcel not found within the container'
     end
   end
 
-private
+  private
 
-  def has_space?(volume_to_add)
+  def any_space?(volume_to_add)
     if current_space > volume_to_add.to_i
       true
     else
@@ -46,27 +43,25 @@ private
       @volume.to_i
     else
       sum = 0
-      @parcels.each { |parcel|
-        sum = sum + parcel.volume.to_i
-      }
+      @parcels.each do |parcel|
+        sum += parcel.volume.to_i
+      end
       @volume.to_i - sum
     end
   end
 
-  def is_parcel_in_container?(id)
+  def parcel_in_container?(id)
     found = 0
     if @parcels.empty?
       false
     else
-      @parcels.each { |parcel|
-
+      @parcels.each do |parcel|
         if parcel.id == id
           puts 'Parcel with this ID is already in the container - Can\'t add'
           found = 1
         end
-      }
+      end
     end
-     found == 1 ? true : false
+    found == 1 ? true : false
   end
-
 end
