@@ -64,15 +64,8 @@ end
 # TODO: Ben - make this work
 def remove_parcel
   puts 'Enter the ID of the parcel to remove:'
-  gets.chomp
-
-  # TODO: Ben to fix this bit when you've has built the container.remove_parcel
-  # functionality.
-  # if container.parcels.include?(id)
-  #   container.remove_parcel(id)
-  # else
-  #   puts 'The ID does not exist in the container'
-  # end
+  parcel.id = gets.chomp
+  container.remove_parcel(parcel.id)
 end
 
 # Welcome to the game
