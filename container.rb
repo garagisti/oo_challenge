@@ -26,6 +26,19 @@ class Container
     end
   end
 
+  # Check the Current Space in the container
+  def check_current_space
+    if @parcels.empty?
+      puts @volume.to_i
+    else
+      sum = 0
+      @parcels.each do |parcel|
+        sum += parcel.volume.to_i
+      end
+      puts @volume.to_i - sum
+    end
+  end
+
   private
 
   # Check's if there's any space left
@@ -57,6 +70,7 @@ class Container
     if @parcels.empty?
       false
     else
+
       @parcels.each do |parcel|
         if parcel.id == id
           puts 'Parcel with this ID is already in the container - Can\'t add'
