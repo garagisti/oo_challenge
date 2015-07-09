@@ -62,21 +62,21 @@ def create_cylinder(container)
 end
 
 # TODO: Ben - make this work
-def remove_parcel
+def remove_parcel(container)
   puts 'Enter the ID of the parcel to remove:'
-  parcel.id = gets.chomp
-  container.remove_parcel(parcel.id)
+  parcel_id = gets.chomp
+  container.remove_parcel(parcel_id)
 end
 
 # Welcome to the game
-puts "***********Welcome to Ruby Container Manager*********** \n \n \n"
+puts "\n *********** Welcome to Ruby Container Manager *********** \n \n \n"
 
 # Now call create container method to start the program
 container = create_container
 
 # Now call the true methods of the program
-loop do puts 'Do you want to Add (press \'a\') or Remove (press \'r\') a Parcel? Press
-\'q\' to Quit'
+loop do puts 'Do you want to Add (press \'a\') or Remove (press \'r\') a Parcel?
+  Press \'q\' to Quit'
  user_input = gets.chomp # loop while getting user input
   case user_input
   when 'a'

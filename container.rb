@@ -16,9 +16,14 @@ attr_accessor :volume, :parcels
 
   # TODO: Ben
   def remove_parcel(id)
-    if parcels.include?(parcel.id)
-      parcels.delete(parcel.id)
-      puts "Removed the parcel with id: #{parcel.id} from the container"
+    if is_parcel_in_container?(id)
+      @parcels.each { |parcel|
+        if parcel.id == id
+          puts "Removed the parcel with id: #{parcel.id} from the container"
+          byebug
+          @parcels.delete(parcel)
+        end
+        }
     else
       puts "Parcel not found within the container"
     end
@@ -35,7 +40,7 @@ private
     end
   end
 
-  # TODO: Rahul
+  # Calulate the Current Space in the container
   def current_space
     if @parcels.empty?
       @volume.to_i
