@@ -2,7 +2,7 @@ require './container'
 require './cube'
 require './cylinder'
 require './parcel'
-require 'byebug'
+#require 'byebug'
 
 # Shows the content of the container upon Quitting.
 def show_container_content(container)
@@ -80,6 +80,7 @@ container = create_container
 # Now call the true methods of the program
 loop do
   puts 'Do you want to Add (press \'a\') or Remove (press \'r\') a Parcel?
+  Press \'c\' to check available volume in container
   Press \'q\' to Quit'
   user_input = gets.chomp # loop while getting user input
   case user_input
@@ -89,6 +90,9 @@ loop do
   when 'r'
     puts 'Removing parcel'
     remove_parcel(container)
+  when 'c'
+    puts 'Current space available is:'
+    container.check_current_space  
   when 'q'
     puts 'Quitting'
     show_container_content(container) unless container.parcels.empty?
