@@ -10,7 +10,7 @@ def initialize(id, height, radius)
 end
 
 def volume
-  Math.pi*(@radius**2)*@height
+  Math::PI*(@radius**2)*@height
 end
 
 end

@@ -4,13 +4,14 @@ attr_accessor :volume, :parcels
 
   def initialize(volume)
     @volume = volume
-    parcels = []
+    @parcels = []
   end
 
   # TODO: Rahul
   def add_parcel(parcel)
     byebug
-    parcels << parcel if has_space?(parcel.volume) && !parcels.include?(parcel.id)
+    @parcels << parcel if
+    has_space?(parcel.volume) && !is_parcel_in_container?(parcel.id)
   end
 
   # TODO: Ben
@@ -23,12 +24,41 @@ attr_accessor :volume, :parcels
 private
 
   def has_space?(volume_to_add)
-    current_space > volume_to_add
+    if current_space > volume_to_add.to_i
+      true
+    else
+      puts 'Can\'t add parcel. Too Big'
+      false
+    end
   end
 
   # TODO: Rahul
   def current_space
-    # volume - sum of parcel volume
+    if @parcels.empty?
+      @volume.to_i
+    else
+      sum = 0
+      @parcels.each { |parcel|
+        sum = sum + parcel.volume.to_i
+      }
+      @volume.to_i - sum
+    end
+  end
+
+  def is_parcel_in_container?(id)
+    found = 0
+    if @parcels.empty?
+      false
+    else
+      @parcels.each { |parcel|
+
+        if parcel.id == id
+          puts 'Parcel with this ID is already in the container - Can\'t add'
+          found = 1
+        end
+      }
+    end
+     found == 1 ? true : false
   end
 
 end
