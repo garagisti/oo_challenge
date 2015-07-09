@@ -70,7 +70,6 @@ class Container
     if @parcels.empty?
       false
     else
-
       @parcels.each do |parcel|
         if parcel.id == id
           puts 'Parcel with this ID is already in the container - Can\'t add'
