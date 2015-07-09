@@ -4,16 +4,19 @@ require './cylinder'
 require './parcel'
 require 'byebug'
 
+# Shows the content of the container upon Quitting.
 def show_container_content(container)
   puts "Your container had #{container.parcels.length} parcels."
 end
 
+# Creates the Initial Container
 def create_container
   puts 'Enter the size of your container'
   container_volume = gets.chomp
   Container.new(container_volume)
 end
 
+# Gets the user inptu to create a parcel - Cube or Cylinder
 def create_parcel(container)
   puts 'Let\'s add a Parcel to the Container'
   loop do
@@ -31,7 +34,7 @@ def create_parcel(container)
   end
 end
 
-# TODO: Rahul
+# Gets the user input and Creates a Cuboid
 def create_cuboid(container)
   puts 'Lets add a Cuboid'
   # Get the user's input on id, height, width & breadth of the cube
@@ -47,7 +50,7 @@ def create_cuboid(container)
   container.add_parcel(Cube.new(cube_id, cube_height, cube_width, cube_breadth))
 end
 
-# TODO: Rahul
+# Gets the user input and Creates a Cylinder
 def create_cylinder(container)
   puts 'Lets add a Cylinder'
   puts 'Enter the Cylinder Id:'
@@ -61,7 +64,7 @@ def create_cylinder(container)
   container.add_parcel(Cylinder.new(cyl_id, cyl_height, cyl_radius))
 end
 
-# TODO: Ben - make this work
+# Removes a Parcel from the container
 def remove_parcel(container)
   puts 'Enter the ID of the parcel to remove:'
   parcel_id = gets.chomp

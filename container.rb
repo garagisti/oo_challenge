@@ -6,13 +6,13 @@ class Container
     @parcels = []
   end
 
-  # TODO: Rahul
+  # Adds Parcel
   def add_parcel(parcel)
     @parcels << parcel if
     any_space?(parcel.volume) && !parcel_in_container?(parcel.id)
   end
 
-  # TODO: Ben
+  # Removes Parcel
   def remove_parcel(id)
     if parcel_in_container?(id)
       @parcels.each do |parcel|
@@ -28,6 +28,7 @@ class Container
 
   private
 
+  # Check's if there's any space left
   def any_space?(volume_to_add)
     if current_space > volume_to_add.to_i
       true
@@ -50,6 +51,7 @@ class Container
     end
   end
 
+  # Check's if the parcel is already in the container
   def parcel_in_container?(id)
     found = 0
     if @parcels.empty?
