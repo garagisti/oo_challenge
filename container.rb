@@ -26,7 +26,7 @@ class Container
     end
   end
 
-  # Calulate the Current Space in the container
+  # Check the Current Space in the container
   def check_current_space
     if @parcels.empty?
       puts @volume.to_i
